@@ -101,26 +101,35 @@ void IterativeQuickSort(int arr[], int l, int h)
 
 int main()
 {
-	const int sz=1000;
-    int arr[sz];
+    long long temp1 = 0, temp2 = 0;
+    for (int i = 0; i < 10; i++){   
+        const int sz=9000;
+        int arr1[sz],arr2[sz];
 
-	for(int i=0;i<sz;i++){
-        arr[i] = rand()%100;
+        for(int i=0;i<sz;i++){
+            int x = rand()%100;
+            arr1[i] = x;
+            arr2[i] = x;
+
+        }
+
+        //time taken by recursive quick sort
+        auto start1 = high_resolution_clock::now();
+        recursiveQuickSort(arr1, 0, sz - 1);
+        auto stop1 = high_resolution_clock::now();
+        auto duration1 = duration_cast<microseconds>(stop1-start1);
+        temp1 += duration1.count();
+        
+        //time taken by iterative quick sort
+        auto start2 = high_resolution_clock::now();
+        IterativeQuickSort(arr2, 0, sz - 1);
+        auto stop2 = high_resolution_clock::now();
+        auto duration2 = duration_cast<microseconds>(stop2-start2);
+        temp2 += duration2.count();
     }
-	auto arr_size = sizeof(arr) / sizeof(arr[0]);
 
-    //time taken by recursive quick sort
-    auto start1 = high_resolution_clock::now();
-	recursiveQuickSort(arr, 0, arr_size - 1);
-    auto stop1 = high_resolution_clock::now();
-    auto duration1 = duration_cast<microseconds>(stop1-start1);
-    cout<<"Time for recursive quicksort: "<<duration1.count()<< " microseconds "<<endl;
-	
-    //time taken by iterative quick sort
-    auto start2 = high_resolution_clock::now();
-	IterativeQuickSort(arr, 0, arr_size - 1);
-    auto stop2 = high_resolution_clock::now();
-    auto duration2 = duration_cast<microseconds>(stop2-start2);
-    cout<<"Time for iterative quicksort: "<<duration2.count()<< " microseconds "<<endl;
-	return 0;
+    cout<<"Time for recursive quicksort: "<<temp1/10<< " microseconds "<<endl;
+    cout<<"Time for iterative quicksort: "<<temp2/10<< " microseconds "<<endl;
+    return 0;
+
 }
