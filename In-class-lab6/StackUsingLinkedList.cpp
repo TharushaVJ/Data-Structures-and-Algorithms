@@ -36,7 +36,7 @@ public:
     // Pop operation
     void pop() {
         if (top == NULL) {
-            cout << "Stack is empty." << endl;
+            cout << "Stack underflow" << endl;
             return;
         }
         Node* temp = top;
