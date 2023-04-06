@@ -24,10 +24,11 @@ int pop(int stack[]){
 }
 
 void display(int stack[]){
+    cout << "[ ";
     for (int i=0; i<=top; i++){
         cout << stack[i]<<" ";
     }
-    cout<<"\n";
+    cout << "]"<<endl;
 }
 
 int main(){
@@ -43,17 +44,20 @@ int main(){
     for (int i=0; i<10; i++){
         int n = rand() % 50;
         push(stack, n, x);
+        display(stack);
     }
-    display(stack);
+
     for (int i=0; i<5; i++){
         pop(stack);
+        display(stack);
     }
-    display(stack);
+
     for (int i=0; i<4; i++){
         int n = rand() % 50;
         push(stack, n, x);
+        display(stack);
     }
-    display(stack);
+
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop-start);
