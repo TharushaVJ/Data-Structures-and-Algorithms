@@ -31,7 +31,6 @@ public:
         Node* newNode = new Node(d);
         newNode->next = top;
         top = newNode;
-        cout << d << endl;
     }
 
     // Pop operation
@@ -42,7 +41,6 @@ public:
         }
         Node* temp = top;
         top = top->next;
-        cout << temp->data << endl;
         delete temp;
     }
 
