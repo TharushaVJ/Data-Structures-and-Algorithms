@@ -32,7 +32,7 @@ void display(int stack[]){
     }
     else{
         cout << "[ ";
-        for (int i=0; i<=top; i++){
+        for (int i=top; i>=0; i--){
             cout << stack[i]<<" ";
         }
         cout << "]"<<endl;
