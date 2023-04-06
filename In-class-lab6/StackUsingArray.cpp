@@ -6,6 +6,7 @@ using namespace std::chrono;
 
 int top = -1;
 
+//push operation
 void push(int stack[], int data, int x){;
     top++;
     if (top >= x) {
@@ -15,6 +16,7 @@ void push(int stack[], int data, int x){;
     else stack[top] = data;
 }
 
+//pop operation
 int pop(int stack[]){
     if (top == -1) cout << "Stack underflow" << endl;
     else{
@@ -23,12 +25,18 @@ int pop(int stack[]){
     }
 }
 
+//display operation
 void display(int stack[]){
-    cout << "[ ";
-    for (int i=0; i<=top; i++){
-        cout << stack[i]<<" ";
+    if(top<0){
+        cout << "Stack is empty" << endl;
     }
-    cout << "]"<<endl;
+    else{
+        cout << "[ ";
+        for (int i=0; i<=top; i++){
+            cout << stack[i]<<" ";
+        }
+        cout << "]"<<endl;
+    }
 }
 
 int main(){
