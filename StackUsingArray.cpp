@@ -6,14 +6,16 @@ using namespace std::chrono;
 
 int top = -1;
 
-void push(int stack, int data){
-    int stackSize = sizeof(stack)/sizeof(int);
+void push(int stack[], int data, int x){;
     top++;
-    if (top > stackSize) cout << "Stack overflow" << endl;
+    if (top >= x) {
+        cout << "Stack overflow" << endl;
+        top--;
+    }
     else stack[top] = data;
 }
 
-int pop(int stack){
+int pop(int stack[]){
     if (top == -1) cout << "Stack underflow" << endl;
     else{
         top--;
@@ -21,8 +23,11 @@ int pop(int stack){
     }
 }
 
-void display(int stack){
-
+void display(int stack[]){
+    for (int i=0; i<=top; i++){
+        cout << stack[i]<<" ";
+    }
+    cout<<"\n";
 }
 
 int main(){
@@ -37,7 +42,7 @@ int main(){
     //operations for the stack
     for (int i=0; i<10; i++){
         int n = rand() % 50;
-        push(stack, n);
+        push(stack, n, x);
     }
     display(stack);
     for (int i=0; i<5; i++){
@@ -46,13 +51,13 @@ int main(){
     display(stack);
     for (int i=0; i<4; i++){
         int n = rand() % 50;
-        push(stack, n);
+        push(stack, n, x);
     }
     display(stack);
 
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop-start);
-    cout << "Time taken for the operations: " << duration.count() << endl;
+    cout << "Time taken for the operations: " << duration.count() << " microseconds" <<endl;
 
     return 0;
 }
