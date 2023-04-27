@@ -8,37 +8,35 @@ struct node {
 
 // Inorder traversal
 void traverseInOrder(struct node* root) {
-    if (node == NULL) return;
+    if (root == NULL) return;
     traverseInOrder(root->left);
-    cout << root->key << endl;
+    cout << root->key << " ";
     traverseInOrder(root->right);
 }
 
 // Insert a node
-struct node* insertNode(struct node* node, int key) {
-    if (node == NULL) {
-        node->key = key;
-    }
-    else if (key <= node->key) {
-        struct node* newNode = new node;
-        node->left = insertNode(newNode, key);
+struct node* insertNode(struct node* root, int key) {
+    struct node* newNode = new node;
+
+    if (root == NULL) {
+        root = newNode;
         newNode->key = key;
         newNode->left = NULL;
         newNode->right = NULL;
     }
-    else if (key > node->key) {
-        struct node* newNode = new node;
-        node->right = insertNode(newNode, key);
-        newNode->key = key;
-        newNode->left = NULL;
-        newNode->right = NULL;
+
+    else if (key <= root->key) {
+        root->left = insertNode(root->left, key);
     }
-    return newNode;
+    else if (key > root->key) {
+        root->right = insertNode(root->right, key);
+    }
+    return root;
 }
 
 // Deleting a node
 struct node* deleteNode(struct node* root, int key) {
-    if (root == NULL) return root
+    if (root == NULL) return root;
 
         //traverse 
         if (key < root->key) {
@@ -71,7 +69,7 @@ struct node* deleteNode(struct node* root, int key) {
                 }
                 node* temp = current;
                 root->key = temp->key;
-                root->right = deleteNode(root->right, temp->key)
+                root->right = deleteNode(root->right, temp->key);
             }
         }
     return root;
