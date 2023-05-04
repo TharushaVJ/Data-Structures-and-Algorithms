@@ -22,9 +22,8 @@ void heapify(int arr[], int n, int root)
    //parent is not the largest then swap
    if (largest != root){
       swap(arr[root], arr[largest]);
+      heapify(arr, n, largest);   
    }
-
-   heapify(arr[], n, largest);   
 }
   
 // implementing heap sort
@@ -32,13 +31,16 @@ void heapSort(int arr[], int n)
 {
    // build heap
    for (int i = n/2-1; i>=0; i--){
-      heapify(arr[], n, i);
+      heapify(arr, n, i);
    }
   
    // extracting elements from heap one by one
-   for (int i = n-1; i<=0; i--){
+   for (int i = n-1; i>=0; i--){
+      //swap root with last element
       swap(arr[0],arr[i]);
-      heapify(arr[], i, 0);
+
+      //heapify the array without the last element
+      heapify(arr, i, 0);
    }
 }
   
@@ -52,9 +54,22 @@ void displayArray(int arr[], int n)
   
 // main program
 int main()
-{
-   int heap_arr[] = {4,17,3,12,9,6};
-   int n = sizeof(heap_arr)/sizeof(heap_arr[0]);
+{   
+   int n;
+   cout<<"size of array: ";
+   cin >> n;
+
+   int heap_arr[n];
+   
+   cout << "elements in array: ";
+   for(int i=0; i<n; i++){
+    int elmnt;
+    cin >> elmnt;
+    heap_arr[i] = elmnt;
+   }
+
+   //int heap_arr[] = {4,17,3,12,9,6};
+   //int n = sizeof(heap_arr)/sizeof(heap_arr[0]);
    cout<<"Input array"<<endl;
    displayArray(heap_arr,n);
   
