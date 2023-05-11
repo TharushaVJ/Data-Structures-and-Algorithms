@@ -63,15 +63,16 @@ struct HashTable{
         empty = is_slot_empty(hash);
 	//add your code below
         if(!empty){
-            if(password[hash].head->user_name == user_name){
-                cout << "password: " << password[hash].head->password <<endl;
-            }
-            else if(password[hash].tail->user_name == user_name){
-                cout << "password: " << password[hash].tail->password <<endl;
-            }
-            else{
-                cout<<"Password for the given user name not found" << endl;
-            }
+            // if(password[hash].head->user_name == user_name){
+            //     cout << "password: " << password[hash].head->password <<endl;
+            // }
+            // else if(password[hash].tail->user_name == user_name){
+            //     cout << "password: " << password[hash].tail->password <<endl;
+            // }
+            // else{
+            //     cout<<"Password for the given user name not found" << endl;
+            // }
+            password[hash].search(user_name.data());
         }
         else{
             cout<<"Password for the given user name not found" << endl;
