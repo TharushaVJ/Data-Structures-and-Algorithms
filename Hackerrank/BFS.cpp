@@ -54,8 +54,8 @@ vector<int> bfs(int n, int m, vector<vector<int>> edges, int s) {
 int main (){
     int n = 6;
     int m = 5;
-    vector<vector<int>> edges { {1, 2}, {1, 3}, {3, 4}, {4, 5}, {4, 6}};
-    int s = 1;
+    vector<vector<int>> edges { {1, 2}, {1, 3}, {3, 4}, {4, 5}};
+    int s = 6;
 
     vector<int> distances = bfs(n,m,edges,s);
     cout<<"[ ";
