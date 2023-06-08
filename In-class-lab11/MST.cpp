@@ -35,7 +35,7 @@ vector<vector<int>> primsMST(vector<vector<int>> G, int s){
     priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq; 
 
     vector<bool> visited(6,false);
-    pq.push({0, s, NULL});
+    pq.push({0, s, -1});
 
     while(!pq.empty()){
         vector<int> minimumEdge  = pq.top(); //{edgeWeight, node, previousNode}
@@ -62,8 +62,10 @@ vector<vector<int>> primsMST(vector<vector<int>> G, int s){
 void printMST(vector<vector<int>> MST){
     cout<<"Edge  : Weight"<< endl;
     cout<<"--------------"<< endl;
-    for(int i=1; i<6; i++){
-        cout << MST[i][0] << " - " << MST[i][1] << " : " << MST[i][2] << endl;
+    for(int i=0; i<6; i++){
+        if(MST[i][0]!=-1){
+            cout << MST[i][0] << " - " << MST[i][1] << " : " << MST[i][2] << endl;
+        }
     }
     cout<<"--------------"<< endl;
 }
@@ -78,6 +80,6 @@ int main(){
         {1, 0, 5, 0, 4, 0}
     };
 
-    vector<vector<int>> MST = primsMST(adjMatrix, 0);
+    vector<vector<int>> MST = primsMST(adjMatrix, 3);
     printMST(MST);
 }
